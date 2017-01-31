@@ -17,7 +17,7 @@
 | `!wikipedia [query]` | Displays Wikipedia summary|
 | `!lol highest winrate` | Displays LoL top 10 highest winrate champions|
 | `!lol bans` | Displays LoL top 10 most common bans|
-
+| `!chat [message]` | Talk with Cleverbot|
 
 ## To Do
 > coming soon

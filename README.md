@@ -1,5 +1,5 @@
 # discordbot
-> A bot made for Discord that comes with many fun, helpful and cool features and commands!
+> A bot made for Discord that comes with many fun, helpful, and cool features and commands!
 
 ## Commands
 | Command | Description

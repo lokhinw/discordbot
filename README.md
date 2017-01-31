@@ -2,9 +2,15 @@
 > A bot made for Discord that comes with many fun, helpful, and cool features and commands!
 
 ## Commands
+> Note: Do not include square brackets in the command arguments
+
 | Command | Description
 |---------|-------------|
 | `!help` | Displays usage instructions|
+| `$ [ticker symbol]` | Displays stock price|
+| `!meme [memetype], [toptext], [bottomtext]` | Generates and displays a meme based on user input|
+
+
 
 ## To Do
 > coming soon

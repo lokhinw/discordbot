@@ -6,7 +6,7 @@
 |---------|-------------|
 | `!help` | Displays usage instructions|
 
-# Feature Requests
+## Feature Requests
 Any features that you want added to the bot? Feel free to [open an issue](https://github.com/lokhinw/discordbot/issues/new) and let me know.
 ## Setup
 > coming soon

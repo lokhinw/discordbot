@@ -8,8 +8,15 @@
 |---------|-------------|
 | `!help` | Displays usage instructions|
 | `$ [ticker symbol]` | Displays stock price|
-| `!meme [memetype], [toptext], [bottomtext]` | Generates and displays a meme based on user input|
-
+| `!meme [meme type], [top text], [bottom text]` | Generates and displays a meme|
+| `!gamble [amount]` | Gamble certain amount of points|
+| `!ping` | Pong!|
+| `!weather [location]` | Displays weather information|
+| `!translate [from language]>[to language] [text]` | Translate text from one language to another|
+| `!8ball [question]` | Answers the question|
+| `!wikipedia [query]` | Displays Wikipedia summary|
+| `!lol highest winrate` | Displays LoL top 10 highest winrate champions|
+| `!lol bans` | Displays LoL top 10 most common bans|
 
 
 ## To Do

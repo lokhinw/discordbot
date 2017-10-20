@@ -3,6 +3,12 @@ const request = require('request');
 const cheerio = require('cheerio');
 const config = require('./config.json');
 const client = new Discord.Client();
+const Cleverbot = require('cleverbot-node');
+const clev = new Cleverbot;
+
+clev.configure({
+  botapi: config.cleverbot_api_key
+});
 
 client.on('ready', () => {
   client.user.setStatus('online');
@@ -64,6 +70,13 @@ client.on('message', message => {
       } catch (err) {
         console.log(err);
       }
+      break;
+    case config.prefix + 'chat':
+      Cleverbot.prepare(function () {
+        clev.write(args.join(' '), function (response) {
+          message.reply(response.message);
+        });
+      });
       break;
   }
 });

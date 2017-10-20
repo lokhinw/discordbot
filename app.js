@@ -33,7 +33,7 @@ client.on('message', message => {
       }
       break;
     case config.prefix + '8ball':
-      var eightBallAnswers = ['It is certain', 'It is decidedly so', 'Without a doubt', 'Yes, definitely', 'You may rely on it', 'As I see it, yes', 'Most likely', 'Outlook good', 'Yes', 'Signs point to yes', 'Reply hazy try again', 'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again', 'Don\'t count on it', 'My reply is no', 'My sources say no', 'Outlook not so good', 'Very doubtful'];
+      const eightBallAnswers = ['It is certain', 'It is decidedly so', 'Without a doubt', 'Yes, definitely', 'You may rely on it', 'As I see it, yes', 'Most likely', 'Outlook good', 'Yes', 'Signs point to yes', 'Reply hazy try again', 'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again', 'Don\'t count on it', 'My reply is no', 'My sources say no', 'Outlook not so good', 'Very doubtful'];
       let eightBallEmbed = new Discord.RichEmbed()
       if (args.length !== 0) {
         eightBallEmbed.setDescription(':8ball: ' + eightBallAnswers[[Math.floor(Math.random() * eightBallAnswers.length)]]);
@@ -42,14 +42,37 @@ client.on('message', message => {
       }
       message.channel.sendEmbed(eightBallEmbed);
       break;
+    case config.prefix + 'gamble':
+      try {
+        if (!isNaN(args[0]) && (args[0] > 0)) {
+          if (Math.random() >= 0.5) {
+            message.channel.sendMessage(message.author + ' won **' + args[0] + '**' + ' points.' + '\nYou now have **' + '0' + '** points!');
+          } else {
+            message.channel.sendMessage(message.author + ' lost **' + args[0] + '**' + ' points.' + '\nYou have **' + '0' + '** points left.');
+          }
+        } else {
+          message.reply("Invalid amount of points.");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+      break;
+    case config.prefix + 'price':
+      try {
+        let url = "https://www.google.com/finance?q=" + args;
+        getPrice(url, message);
+      } catch (err) {
+        console.log(err);
+      }
+      break;
   }
 });
 
 const getWeather = (url, message) => {
-  request(url, function(error, response, body) {
+  request(url, function (error, response, body) {
     if (!error) {
       try {
-        var compassSectors = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"];
+        const compassSectors = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"];
         let parsedData = JSON.parse(body);
         let weatherEmbed = new Discord.RichEmbed()
           .setTitle('Weather for ' + parsedData.name + ', ' + parsedData.sys.country)
@@ -63,6 +86,26 @@ const getWeather = (url, message) => {
           .addField('Pressure', parsedData.main.pressure + ' mb', true)
           .addField('Humidity', parsedData.main.humidity + '%', true);
         message.channel.sendEmbed(weatherEmbed);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  });
+}
+
+const getPrice = (url, message) => {
+  request(url, function (error, response, body) {
+    if (!error) {
+      try {
+        let a = cheerio.load(body),
+          stockname = a('title').text().split(":"),
+          stockprice = a('span.pr span:nth-child(1)').text(),
+          stockchange = a('span.ch').text();
+        if (stockchange[0] === '+') {
+          message.channel.sendMessage(":chart_with_upwards_trend: " + "**" + stockname[0] + "** - $" + stockprice + " (" + stockchange.split("(")[1]);
+        } else if (stockchange[0] === '-') {
+          message.channel.sendMessage(":chart_with_downwards_trend: " + "**" + stockname[0] + "** - $" + stockprice + " (" + stockchange.split("(")[1]);
+        }
       } catch (err) {
         console.log(err);
       }

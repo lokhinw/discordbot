@@ -1,0 +1,24 @@
+{
+  "name": "discordbot",
+  "version": "1.0.0",
+  "description": "> A bot made for Discord that comes with many fun, helpful, and cool features and commands!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokhinw/discordbot.git"
+  },
+  "author": "Lokhin Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lokhinw/discordbot/issues"
+  },
+  "homepage": "https://github.com/lokhinw/discordbot#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "discord.js": "^11.2.1",
+    "request": "^2.83.0"
+  }
+}

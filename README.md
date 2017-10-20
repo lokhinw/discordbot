@@ -7,23 +7,24 @@
 | Command | Description
 |---------|-------------|
 | `!help` | Displays usage instructions|
-| `$ [ticker symbol]` | Displays stock price|
-| `!meme [meme type], [top text], [bottom text]` | Generates and displays a meme|
+| `!price [ticker symbol]` | Displays stock price|
 | `!gamble [amount]` | Gamble certain amount of points|
 | `!ping` | Pong!|
 | `!weather [location]` | Displays weather information|
-| `!translate [from language]>[to language] [text]` | Translate text from one language to another|
 | `!8ball [question]` | Answers the question|
-| `!wikipedia [query]` | Displays Wikipedia summary|
-| `!lol highest winrate` | Displays LoL top 10 highest winrate champions|
-| `!lol bans` | Displays LoL top 10 most common bans|
 | `!chat [message]` | Talk with Cleverbot|
 
 ## To Do
-> coming soon
+| Command | Description
+|---------|-------------|
+| `!help` | Displays usage instructions|
+| `!meme [meme type], [top text], [bottom text]` | Generates and displays a meme|
+| `!translate [from language]>[to language] [text]` | Translate text from one language to another|
+| `!wikipedia [query]` | Displays Wikipedia summary|
+| `!lol highest winrate` | Displays LoL top 10 highest winrate champions|
 
 ## Feature Requests
 Any features that you want added to the bot? Feel free to [open an issue](https://github.com/lokhinw/discordbot/issues/new) and let me know.
 ## Setup
-> coming soon
+> Coming soon
 

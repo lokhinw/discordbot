@@ -1,8 +1,8 @@
 {
     "bot_name": "ParallaX",
-    "discord_api_key": "",
-    "openweathermap_api_key": "",
-    "cleverbot_api_key": "",
+    "discord_api_key": "MzcwNzIwNjUwNzY5MzM0Mjk1.DMrNeg.PBxQE9032a2MDhesAHUSvMXisHY",
+    "openweathermap_api_key": "736bbe5d8a6cc6ec2ebc1138ab70c706",
+    "cleverbot_api_key": "CC513vCrhjfbB92GsBtdIcV_8tw",
     "prefix": "!",
     "status_message": "!help"
 }

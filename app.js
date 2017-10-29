@@ -78,6 +78,27 @@ client.on('message', message => {
         });
       });
       break;
+    case config.prefix + 'directions':
+      try {
+        let departureLocation = "34 Anita Drive Markham Canada";
+        let destinationLocation = "Markville Mall Markham Canada";
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + departureLocation + "&destination=" + destinationLocation + "&key=AIzaSyBjowTROtfYG8J7Ulwk4OUUemsGysQeWk4";
+        getDirections(url, message);
+      } catch (err) {
+        console.log(err);
+      }
+      break;
+    case config.prefix + 'transit':
+      try {
+        let departureLocation = "34 Anita Drive Markham Canada";
+        let destinationLocation = "Markville Mall Markham Canada";
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + departureLocation + "&destination=" + destinationLocation + "&mode=transit&key=AIzaSyBjowTROtfYG8J7Ulwk4OUUemsGysQeWk4";
+
+        getTransit(url, message);
+      } catch (err) {
+        console.log(err);
+      }
+      break;
   }
 });
 
@@ -103,6 +124,51 @@ const getWeather = (url, message) => {
         console.log(err);
       }
     }
+  });
+}
+function removeBrackets(input) {
+  return input
+    .replace(/{.*?}/g, "")
+    .replace(/\[.*?\]/g, "")
+    .replace(/<.*?>/g, "")
+    .replace(/\(.*?\)/g, "");
+}
+const getDirections = (url, message) => {
+  request(url, function (error, response, body) {
+    try {
+      let parsedData = JSON.parse(body);
+      parsedData.routes[0].legs[0].steps.forEach(function (e) {
+        console.log(removeBrackets(e.html_instructions)replace(/([a-z])([A-Z])/, '$1 $2'));
+      });
+      console.log();
+    } catch (err) {
+      console.log(err);
+    }
+  });
+}
+
+const getTransit = (url, message) => {
+  request(url, function (error, response, body) {
+    try {
+      let parsedData = JSON.parse(body);
+      parsedData.routes[0].legs[0].steps.forEach(function (e) {
+        console.log(e.html_instructions);
+      });
+      console.log();
+    } catch (err) {
+      console.log(err);
+    }
+  });
+}
+
+const getWolfram = (input) => {
+  let url = "http://api.wolframalpha.com/v1/result?appid=AK7VHR-KYT34TQ9EK&i=" + input;
+  request(url, function(error,response,body) {
+try {
+console.log(body);
+} catch (err) {
+  console.log(err);
+}
   });
 }
 
